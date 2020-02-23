@@ -1,22 +1,23 @@
 import requests
 from bs4 import BeautifulSoup
-import pprint
+import pprint  # Pretty printclear
 
 res = requests.get('https://news.ycombinator.com/news')
 
 # get second page of website
-res2 = requests.get('https://news.ycombinator.com/news?p=2')
+# res2 = requests.get('https://news.ycombinator.com/news?p=2')
+
 soup = BeautifulSoup(res.text, 'html.parser')
 links = soup.select('.storylink')
 subtext = soup.select('.subtext')
 
 # Grab link and subtext of second page
-links2 = soup.select('.storylink')
-subtext2 = soup.select('.subtext')
+# links2 = soup.select('.storylink')
+# subtext2 = soup.select('.subtext')
 
 # Combine links and subtext
-combine_link = links + links2
-combine_subtext = subtext + subtext2
+# combine_links = links + links2
+# combine_subtexts = subtext + subtext2
 
 
 def sort_stories_by_votes(hack_news_list):
@@ -54,5 +55,5 @@ def create_custom_hn(links, subtext):
 
 # If we want to grad second page of website
 # just remplace these two parameters by
-# links2 and sundtext2
+# combine_links and combine_sundtexts
 pprint.pprint(create_custom_hn(links, subtext))
